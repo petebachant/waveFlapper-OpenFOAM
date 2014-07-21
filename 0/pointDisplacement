@@ -46,7 +46,7 @@ boundaryField
     flapper
     {
         type            oscillatingDisplacement;
-        amplitude       (0.1 0 0);
+        amplitude       (0.2 0 0);
         omega           6.2831853;
         value           uniform (0 0 0);
     }
