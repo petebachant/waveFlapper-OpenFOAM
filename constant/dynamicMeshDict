@@ -1,0 +1,111 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      motionProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dynamicFvMesh       dynamicMotionSolverFvMesh;
+motionSolverLibs    ("libfvMotionSolvers.so");
+solver              displacementLaplacian;
+
+oscillatingLinearMotionCoeffs
+{
+    patches (flapper);
+    innerDistance   0.2;   // Extent of the solid-body motion region around body 
+    outerDistance   0.5;     // Extent of mesh-morphing region around body 
+
+    solidBodyMotionFunction  oscillatingLinearMotion;
+
+    oscillatingLinearMotionCoeffs
+    {
+        amplitude       (0.1 0 0);
+        omega           3.14; // rad/s  (.5 rps)
+    }
+}
+
+velocityComponentLaplacianCoeffs
+{
+    component       x;
+    diffusivity     directional ( 1 200 0 );
+}
+
+displacementLaplacianCoeffs
+{
+    // diffusivity  uniform;
+    // diffusivity  directional (1 200 0);
+    // diffusivity  motionDirectional (1 1000 0);
+    // diffusivity  file motionDiffusivity;
+    diffusivity  inverseDistance 1(flapper);
+}
+
+/*
+dynamicFvMesh      dynamicMotionSolverFvMesh;
+
+motionSolverLibs ("libsixDoFRigidBodyMotion.so");
+
+solver            sixDoFRigidBodyMotion;
+
+sixDoFRigidBodyMotionCoeffs
+{
+    patches         (flapper);
+    innerDistance   0.2;
+    outerDistance   0.7;
+
+    mass            22.9;
+    centreOfMass    (0.4974612746 -0.01671895744 0.05);
+    momentOfInertia (100.958864357 300.920839234 200.057121362);
+    orientation
+    (
+        0.9953705935 0.09611129781 0
+        -0.09611129781 0.9953705935 0
+        0 0 1
+    );
+    angularMomentum (0 0 -2);
+    g               (0 0 0);
+    rhoName         rhoInf;
+    rhoInf          1;
+    report          on;
+
+    constraints
+    {
+        yLine
+        {
+            sixDoFRigidBodyMotionConstraint line;
+            centreOfRotation    (0.0 -2.44 0.05);
+            direction           (0 0 1);
+        }
+
+        zAxis
+        {
+            sixDoFRigidBodyMotionConstraint axis;
+            axis                (0 0 1);
+        }
+    }
+
+    restraints
+    {
+
+        axialSpring
+        {
+            sixDoFRigidBodyMotionRestraint linearAxialAngularSpring;
+
+            axis            (0 0 1);
+            stiffness       700;
+            damping         0.5;
+            referenceOrientation $orientation;
+        }
+    }
+}
+*/
+
+// ************************************************************************* //
