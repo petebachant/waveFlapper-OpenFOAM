@@ -25,11 +25,11 @@ stopAt          endTime;
 
 endTime         15;
 
-deltaT          .001;
+deltaT          .01;
 
 writeControl    timeStep;
 
-writeInterval   50;
+writeInterval   5;
 
 purgeWrite      0;
 
@@ -50,9 +50,28 @@ adjustTimeStep  no;
 maxCo           0.2;
 maxAlphaCo      0.5;
 
+libs
+(
+    "libOpenFOAM.so"
+    "libforces.so"
+);
+
 functions
 {
-    #include "cuttingPlane"
+    forces
+    {
+        type                forces;
+        functionObjectLibs  ("libforces.so");
+        outputControl       timeStep;
+        outputInterval      1;
+        patches             (flapper);
+        pName               p;
+        UName               U;
+        rhoName             rhoInf;
+        log                 true;
+        rhoInf              1000.0;
+        CofR                (3.1 -2.44 0.05);
+    }
 }
 
 // ************************************************************************* //
