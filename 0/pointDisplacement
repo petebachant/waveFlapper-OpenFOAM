@@ -23,7 +23,8 @@ boundaryField
 {
     atmosphere
     {
-        type            slip;
+        type            uniformFixedValue;
+        uniformValue    (0 0 0);
     }
 
     inlet
@@ -40,14 +41,18 @@ boundaryField
 
     bottom
     {
-        type            slip;
+        type            uniformFixedValue;
+        uniformValue    (0 0 0);
     }
 
     flapper
     {
-        type            oscillatingDisplacement;
-        amplitude       (0.2 0 0);
+        type            angularOscillatingDisplacement;
         omega           6.2831853;
+        axis            (0 0 1);
+        origin          (3 -2.44 0.05);
+        angle0          0;
+        amplitude       -0.1;
         value           uniform (0 0 0);
     }
 

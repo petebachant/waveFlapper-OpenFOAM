@@ -17,13 +17,13 @@ FoamFile
 
 application     interDyMFoam;
 
-startFrom       startTime;
+startFrom       latestTime;
 
 startTime       0;
 
 stopAt          endTime;
 
-endTime         1;
+endTime         15;
 
 deltaT          .001;
 
