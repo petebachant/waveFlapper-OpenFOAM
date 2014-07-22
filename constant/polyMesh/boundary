@@ -21,40 +21,40 @@ FoamFile
     {
         type            patch;
         nFaces          80;
-        startFace       28354;
+        startFace       28360;
     }
     bottom
     {
         type            wall;
         inGroups        1(wall);
         nFaces          179;
-        startFace       28434;
+        startFace       28440;
     }
     outlet
     {
         type            patch;
         nFaces          80;
-        startFace       28613;
+        startFace       28619;
     }
     atmosphere
     {
         type            patch;
         nFaces          180;
-        startFace       28693;
+        startFace       28699;
     }
     frontBack
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          28676;
-        startFace       28873;
+        nFaces          28680;
+        startFace       28879;
     }
     flapper
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          125;
-        startFace       57549;
+        nFaces          121;
+        startFace       57559;
     }
 )
 
