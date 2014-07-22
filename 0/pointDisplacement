@@ -48,11 +48,11 @@ boundaryField
     flapper
     {
         type            angularOscillatingDisplacement;
-        omega           6.2831853;
+        omega           2.86; // 2.2 second period
         axis            (0 0 1);
         origin          (3.1 -2.44 0.05);
         angle0          0;
-        amplitude       -0.17;
+        amplitude       -0.048; // Max piston stroke
         value           uniform (0 0 0);
     }
 
