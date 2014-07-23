@@ -28,12 +28,12 @@ def plot_moment():
     theta = 0.048*np.sin(omega*t)
     theta_doubledot = -0.048*omega**2*np.sin(omega*t)
     m_inertial = I_paddle*theta_doubledot
-    m += m_inertial
+    m = m + m_inertial
     plt.figure()
     plt.plot(t, m)
     plt.xlabel("t (s)")
     plt.ylabel("Flapper moment (Nm)")
-    print("Max moment from CFD =", m.max(), "Nm")
+    print("Max moment from CFD (including inertia) = {:0.1f}".format(m.max()), "Nm")
     print("Theoretical max moment (including inertia) =", 5500*3.3, "Nm") 
     plt.show()
     
