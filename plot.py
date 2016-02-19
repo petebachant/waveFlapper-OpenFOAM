@@ -1,8 +1,5 @@
 #!/usr/bin/env python
-"""
-Processing routines for the waveFlapper case.
-
-"""
+"""Processing routines for the waveFlapper case."""
 
 import foampy
 import numpy as np
@@ -14,9 +11,11 @@ m_paddle = 1270.0 # Paddle mass in kg, from OMB manual
 h_piston = 3.3147  
 I_paddle = 1/3*m_paddle*h_piston**2
 
+
 def plot_force():
     """Plots the streamwise force on the paddle over time."""
-    
+
+
 def plot_moment():
     data = foampy.load_forces_moments()
     i = 10
@@ -36,6 +35,7 @@ def plot_moment():
     print("Max moment from CFD (including inertia) = {:0.1f}".format(m.max()), "Nm")
     print("Theoretical max moment (including inertia) =", 5500*3.3, "Nm") 
     plt.show()
-    
+
+
 if __name__ == "__main__":
     plot_moment()
