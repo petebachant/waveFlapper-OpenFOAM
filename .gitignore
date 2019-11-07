@@ -4,7 +4,8 @@ constant/polyMesh
 *.OpenFOAM
 log.*
 *.pyc
-!0.orig
+!0
+0/alpha.water
 *.pvsm
 figures
 dynamicCode
