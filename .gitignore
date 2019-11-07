@@ -10,3 +10,4 @@ log.*
 figures
 dynamicCode
 processor*
+postProcessing
