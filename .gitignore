@@ -1,2 +1,11 @@
-*~
-constant/polyMesh/boundary
+[0-9]*.[0-9]*
+[0-9]*
+constant/polyMesh
+*.OpenFOAM
+log.*
+*.pyc
+!0.orig
+*.pvsm
+figures
+dynamicCode
+processor*
